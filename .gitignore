@@ -1,0 +1,47 @@
+# Ignore build output directory
+/build/
+/export/
+
+# Ignore object files and dependent files
+*.o
+*.d
+
+# Ignore logs folder and log files
+/logs/
+*.log
+.vitis_hls_log_all.xml
+
+# Ignore lock files
+*.lock
+
+# Ignore binary and configuration files
+*.bin
+*.pdi
+*.vitisWorkspace.json
+
+# Ignore cache and temporary directories
+.cache/
+.autopilot/
+_ide/
+_ide/logs/
+_ide/.wsdata/
+
+# Ignore IDE specific files
+.idea/*
+.vscode/
+*.swp
+*.swo
+
+# Ignore Vitis HLS specific temporary files
+*.str
+*.dat
+*.pb
+*.protoinst
+*.tcl~
+compile_commands.json
+
+# Do NOT ignore these important directories and files
+# source/
+# testbench/
+# hls_config.cfg
+# vitis-comp.json
