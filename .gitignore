@@ -40,6 +40,13 @@ _ide/.wsdata/
 *.tcl~
 compile_commands.json
 
+.hls.failed
+dfx_runtime.txt
+.output.txt
+dti_hls_core.hlsrun_csim_summary
+dti_hls_core
+hls
+
 # Do NOT ignore these important directories and files
 # source/
 # testbench/

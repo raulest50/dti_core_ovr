@@ -4,8 +4,8 @@
 
 #include <complex>
 #include <cstdio>
-#include "step_propagators.h"   // defines DIM
 #include <hls_x_complex.h>     // defines hls::x_complex
+#include "step_propagators.h"   // defines DIM
 
 // Print the top-left maxR×maxC block of a DIM×DIM complex matrix
 // Works for std::complex<float> and hls::x_complex<float>
