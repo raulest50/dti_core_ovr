@@ -123,11 +123,3 @@ The project includes a comprehensive testbench that validates:
 3. Full propagation steps (1, 40, 80, and 120 steps)
 
 Test results are compared against reference data with an RMS error threshold of 1e-3.
-
-## License
-
-[Specify the license under which this project is released]
-
-## Acknowledgments
-
-[Include any acknowledgments or references to papers/algorithms used]
