@@ -106,8 +106,8 @@ void adi_x(
     #pragma HLS ARRAY_PARTITION variable=b_vec   complete
     #pragma HLS ARRAY_PARTITION variable=result  complete
 
+    #pragma HLS PIPELINE II=1
     for (int col = 0; col < DIM; col++) {
-        #pragma HLS DATAFLOW
 
         // Carga de columna
         for (int row = 0; row < DIM; row++) {
@@ -166,8 +166,8 @@ void adi_y(
     #pragma HLS ARRAY_PARTITION variable=b_vec    complete
     #pragma HLS ARRAY_PARTITION variable=result   complete
 
+    #pragma HLS PIPELINE II=1
     for (int row = 0; row < DIM; row++) {
-        #pragma HLS DATAFLOW
 
         // Carga de fila
         for (int col = 0; col < DIM; col++) {
