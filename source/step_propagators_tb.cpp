@@ -258,13 +258,13 @@ int main() {
     // Actualizado para usar los archivos de validation_data_main
     run_adi_test("ADI X",
                  adi_x,
-                 "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\individual_ops_in.dat",
-                 "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\adi_x_out.dat");
+                 "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\individual_ops_in.dat",
+                 "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\adi_x_out.dat");
 
     run_adi_test("ADI Y",
                  adi_y,
-                 "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\individual_ops_in.dat",
-                 "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\adi_y_out.dat");
+                 "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\individual_ops_in.dat",
+                 "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\adi_y_out.dat");
 
     // Prueba para operadores no lineales combinados
     run_adi_test("Half Nonlinear Ops Combined",
@@ -281,46 +281,46 @@ int main() {
                          }
                      }
                  },
-                 "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\individual_ops_in.dat",
-                 "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\half_nonlinear_ops_combined_out.dat");
+                 "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\individual_ops_in.dat",
+                 "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\half_nonlinear_ops_combined_out.dat");
 
     // Prueba para compute_b_vector con los nuevos archivos de parámetros
     run_bvec_test("compute_b_vector",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\b_vector_dp_in.dat",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\b_vector_dp1_in.dat",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\b_vector_dp2_in.dat",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\b_vector_do_in.dat",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\b_vector_x0_in.dat",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\b_vector_out.dat");
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\b_vector_dp_in.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\b_vector_dp1_in.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\b_vector_dp2_in.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\b_vector_do_in.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\b_vector_x0_in.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\b_vector_out.dat");
 
     // Prueba para custom_thomas_solver con los nuevos archivos de parámetros
     run_thomas_test("custom_thomas_solver",
-                    "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\b_vector_dp_in.dat",
-                    "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\b_vector_dp1_in.dat",
-                    "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\b_vector_dp2_in.dat",
-                    "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\b_vector_do_in.dat",
-                    "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\b_vector_out.dat",
-                    "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\thomas_solver_out.dat");
+                    "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\b_vector_dp_in.dat",
+                    "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\b_vector_dp1_in.dat",
+                    "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\b_vector_dp2_in.dat",
+                    "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\b_vector_do_in.dat",
+                    "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\b_vector_out.dat",
+                    "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\thomas_solver_out.dat");
 
     // Pruebas para propagación completa
     run_full_step("Propagation step 1",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\initial_field.dat",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\full_step_within_tissue_step_1.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\initial_field.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\full_step_within_tissue_step_1.dat",
                   1);
 
     run_full_step("Propagation step 40",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\initial_field.dat",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\full_step_within_tissue_step_40.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\initial_field.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\full_step_within_tissue_step_40.dat",
                   40);
 
     run_full_step("Propagation step 80",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\initial_field.dat",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\full_step_within_tissue_step_80.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\initial_field.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\full_step_within_tissue_step_80.dat",
                   80);
 
     run_full_step("Propagation step 120",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\initial_field.dat",
-                  "C:\\Vws\\z_scan_acceleration_ovr\\propagation_kernel_v1\\validation_data_main\\full_step_within_tissue_step_120.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\initial_field.dat",
+                  "C:\\Vws25\\dti_hls_core\\source\\validation_data_main\\full_step_within_tissue_step_120.dat",
                   120);
 
     return 0;

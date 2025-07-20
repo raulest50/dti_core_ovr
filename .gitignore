@@ -47,6 +47,8 @@ dti_hls_core.hlsrun_csim_summary
 dti_hls_core
 hls
 
+dti_hls_core.hlscompile_summary
+
 # Do NOT ignore these important directories and files
 # source/
 # testbench/
