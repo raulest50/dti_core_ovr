@@ -1,0 +1,243 @@
+<design_size title="Design Size Report">
+    <item name="Total Instructions per Compilation Phase">
+        <table>
+            <keys size="4">Phase, Step, Instructions, Description</keys>
+            <column name="Compile/Link">, 261199 *, After all functions are compiled and linked into a single design</column>
+            <column name="">, , </column>
+            <column name="Unroll/Inline">, , After user unroll and inline pragmas are applied</column>
+            <column name="">(1) unroll,  36783, user unroll pragmas are applied</column>
+            <column name="">(2) simplification,  12021, simplification of applied user unroll pragmas</column>
+            <column name="">(3) inline,   9453, user inline pragmas are applied</column>
+            <column name="">(4) simplification,   5815, simplification of applied user inline pragmas</column>
+            <column name="">, , </column>
+            <column name="Array/Struct">, , After user array partition and struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(1) array partition, 174867 *, user array partition pragmas are applied</column>
+            <column name="">(2) simplification, 203146 *, simplification of applied user array partition &amp; struct aggregate/disaggregate pragmas</column>
+            <column name="">(3) aggregate/disaggregate , 203202 *, user struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(4) array reshape, 203520 *, apply array reshape pragmas</column>
+            <column name="">(5) access patterns, 207348 *, array access pattern optmizations</column>
+            <column name="">, , </column>
+            <column name="Performance">, , After transformations are applied to meet performance pragma targets</column>
+            <column name="">(1) loop simplification, 195663 *, loop and instruction simplification</column>
+            <column name="">(2) parallelization, 136861 *, loops are unrolled or pipelined to meet performance targets</column>
+            <column name="">(3) array partition, 137227 *, arrays are partitioned to meet performance targets</column>
+            <column name="">(4) simplification, 134523 *, simplification of design after performance transformations</column>
+            <column name="">, , </column>
+            <column name="HW Transforms">, , After hardware transfomations</column>
+            <column name="">(1) lowering, 134479 *, initial conversion to HW specific instructions</column>
+            <column name="">(2) optimizations, 134247 *, high level synthesis optimizations</column>
+        </table>
+    </item>
+    <item name="Instructions per Function for each Compilation Phase">
+        <hiertable>
+            <header size="7" col0="Function" col1="Location" col2="Compile/Link" col3="Unroll/Inline" col4="Array/Struct" col5="Performance" col6="HW Transforms"/>
+            <rows>
+                <row id="0" col0="dti_core_ovr" col1="dti_core_ovr.cpp:22" col2="261199" col2_note="*" col3="5815" col4="207348" col4_note="*" col5="134523" col5_note="*" col6="134247" col6_note="*">
+                    <row id="9" col0="propagation_step" col1="step_propagators.cpp:251" col2="261097" col3="5741" col4="207272" col5="134447" col6="134097">
+                        <row id="19" col0="adi_x" col1="step_propagators.cpp:96" col2="74384" col3="1934" col4="85820" col5="47961" col6="">
+                            <row id="16" col0="real" col1="hls_x_complex.h:64" col2="4" col2_disp="     4 (2 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="4" col2_disp="     4 (2 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="56" col2_disp="    56 (8 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="31" col0="operator-" col1="hls_x_complex.h:257" col2="1028" col2_disp=" 1,028 (4 calls)" col3="36" col3_disp="  36 (4 calls)" col4="20" col4_disp="    20 (4 calls)" col5="14" col5_disp="    14 (4 calls)" col6="">
+                                <row id="16" col0="real" col1="hls_x_complex.h:64" col2="8" col2_disp="     8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                <row id="30" col0="real" col1="hls_x_complex.h:66" col2="16" col2_disp="    16 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="8" col2_disp="     8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                <row id="22" col0="imag" col1="hls_x_complex.h:71" col2="16" col2_disp="    16 (4 calls)" col3="" col4="" col5="" col6=""/>
+                            </row>
+                            <row id="13" col0="operator-" col1="hls_x_complex.h:243" col2="2235" col2_disp=" 2,235 (5 calls)" col3="51" col3_disp="  51 (5 calls)" col4="39" col4_disp="    39 (5 calls)" col5="19" col5_disp="    19 (5 calls)" col6="">
+                                <row id="32" col0="operator-=" col1="hls_x_complex.h:219" col2="2215" col2_disp=" 2,215 (5 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="16" col0="real" col1="hls_x_complex.h:64" col2="10" col2_disp="    10 (5 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="10" col2_disp="    10 (5 calls)" col3="" col4="" col5="" col6=""/>
+                                </row>
+                            </row>
+                            <row id="17" col0="operator+" col1="hls_x_complex.h:200" col2="4994" col2_disp=" 4,994 (11 calls)" col3="99" col3_disp="  99 (11 calls)" col4="63" col4_disp="    63 (11 calls)" col5="43" col5_disp="    43 (11 calls)" col6="">
+                                <row id="29" col0="operator+=" col1="hls_x_complex.h:178" col2="4895" col2_disp=" 4,895 (11 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="16" col0="real" col1="hls_x_complex.h:64" col2="22" col2_disp="    22 (11 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="22" col2_disp="    22 (11 calls)" col3="" col4="" col5="" col6=""/>
+                                </row>
+                            </row>
+                            <row id="28" col0="operator*" col1="hls_x_complex.h:119" col2="5464" col2_disp=" 5,464 (4 calls)" col3="100" col3_disp=" 100 (4 calls)" col4="12" col4_disp="    12 (4 calls)" col5="12" col5_disp="    12 (4 calls)" col6="">
+                                <row id="20" col0="operator*=" col1="hls_x_complex.h:95" col2="5448" col2_disp=" 5,448 (4 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="16" col0="real" col1="hls_x_complex.h:64" col2="16" col2_disp="    16 (8 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="16" col2_disp="    16 (8 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="28" col2_disp="    28 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                </row>
+                            </row>
+                            <row id="18" col0="compute_b_vector" col1="step_propagators.cpp:72" col2="11460" col3="301" col4="25341" col5="5473" col6="">
+                                <row id="28" col0="operator*" col1="hls_x_complex.h:119" col2="9562" col2_disp=" 9,562 (7 calls)" col3="189" col3_disp=" 189 (7 calls)" col4="20682" col4_disp="20,682 (766 calls)" col5="84" col5_disp="    84 (4 calls)" col6="">
+                                    <row id="20" col0="operator*=" col1="hls_x_complex.h:95" col2="9534" col2_disp=" 9,534 (7 calls)" col3="" col4="" col5="" col6="">
+                                        <row id="16" col0="real" col1="hls_x_complex.h:64" col2="28" col2_disp="    28 (14 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="28" col2_disp="    28 (14 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="49" col2_disp="    49 (7 calls)" col3="" col4="" col5="" col6=""/>
+                                    </row>
+                                </row>
+                                <row id="17" col0="operator+" col1="hls_x_complex.h:200" col2="1816" col2_disp=" 1,816 (4 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="29" col0="operator+=" col1="hls_x_complex.h:178" col2="1780" col2_disp=" 1,780 (4 calls)" col3="" col4="" col5="" col6="">
+                                        <row id="16" col0="real" col1="hls_x_complex.h:64" col2="8" col2_disp="     8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="8" col2_disp="     8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                    </row>
+                                </row>
+                            </row>
+                            <row id="24" col0="custom_thomas_solver" col1="step_propagators.cpp:31" col2="25257" col3="561" col4="46102" col5="29686" col6="">
+                                <row id="11" col0="operator/" col1="hls_x_complex.h:161" col2="16035" col2_disp="16,035 (5 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="14" col0="operator/=" col1="hls_x_complex.h:139" col2="16015" col2_disp="16,015 (5 calls)" col3="" col4="" col5="" col6="">
+                                        <row id="16" col0="real" col1="hls_x_complex.h:64" col2="40" col2_disp="    40 (20 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="20" col2_disp="    20 (10 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="70" col2_disp="    70 (10 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="28" col0="operator*" col1="hls_x_complex.h:119" col2="13660" col2_disp="13,660 (10 calls)" col3="" col4="" col5="" col6="">
+                                            <row id="20" col0="operator*=" col1="hls_x_complex.h:95" col2="13620" col2_disp="13,620 (10 calls)" col3="" col4="" col5="" col6="">
+                                                <row id="16" col0="real" col1="hls_x_complex.h:64" col2="40" col2_disp="    40 (20 calls)" col3="" col4="" col5="" col6=""/>
+                                                <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="40" col2_disp="    40 (20 calls)" col3="" col4="" col5="" col6=""/>
+                                                <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="70" col2_disp="    70 (10 calls)" col3="" col4="" col5="" col6=""/>
+                                            </row>
+                                        </row>
+                                    </row>
+                                </row>
+                                <row id="28" col0="operator*" col1="hls_x_complex.h:119" col2="6830" col2_disp=" 6,830 (5 calls)" col3="100" col3_disp=" 100 (4 calls)" col4="12750" col4_disp="12,750 (510 calls)" col5="42" col5_disp="    42 (2 calls)" col6="">
+                                    <row id="20" col0="operator*=" col1="hls_x_complex.h:95" col2="6810" col2_disp=" 6,810 (5 calls)" col3="" col4="" col5="" col6="">
+                                        <row id="16" col0="real" col1="hls_x_complex.h:64" col2="20" col2_disp="    20 (10 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="20" col2_disp="    20 (10 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="35" col2_disp="    35 (5 calls)" col3="" col4="" col5="" col6=""/>
+                                    </row>
+                                </row>
+                                <row id="13" col0="operator-" col1="hls_x_complex.h:243" col2="2235" col2_disp=" 2,235 (5 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="32" col0="operator-=" col1="hls_x_complex.h:219" col2="2215" col2_disp=" 2,215 (5 calls)" col3="" col4="" col5="" col6="">
+                                        <row id="16" col0="real" col1="hls_x_complex.h:64" col2="10" col2_disp="    10 (5 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="10" col2_disp="    10 (5 calls)" col3="" col4="" col5="" col6=""/>
+                                    </row>
+                                </row>
+                                <row id="14" col0="operator/=" col1="hls_x_complex.h:139" col2="" col3="215" col3_disp=" 215 (5 calls)" col4="21973" col4_disp="21,973 (511 calls)" col5="123" col5_disp="   123 (3 calls)" col6=""/>
+                            </row>
+                            <row id="11" col0="operator/" col1="hls_x_complex.h:161" col2="6414" col2_disp=" 6,414 (2 calls)" col3="106" col3_disp=" 106 (2 calls)" col4="106" col4_disp="   106 (2 calls)" col5="90" col5_disp="    90 (2 calls)" col6="">
+                                <row id="14" col0="operator/=" col1="hls_x_complex.h:139" col2="6406" col2_disp=" 6,406 (2 calls)" col3="90" col3_disp="  90 (2 calls)" col4="90" col4_disp="    90 (2 calls)" col5="82" col5_disp="    82 (2 calls)" col6="">
+                                    <row id="16" col0="real" col1="hls_x_complex.h:64" col2="16" col2_disp="    16 (8 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="8" col2_disp="     8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="28" col2_disp="    28 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="28" col0="operator*" col1="hls_x_complex.h:119" col2="5464" col2_disp=" 5,464 (4 calls)" col3="" col4="" col5="" col6="">
+                                        <row id="20" col0="operator*=" col1="hls_x_complex.h:95" col2="5448" col2_disp=" 5,448 (4 calls)" col3="" col4="" col5="" col6="">
+                                            <row id="16" col0="real" col1="hls_x_complex.h:64" col2="16" col2_disp="    16 (8 calls)" col3="" col4="" col5="" col6=""/>
+                                            <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="16" col2_disp="    16 (8 calls)" col3="" col4="" col5="" col6=""/>
+                                            <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="28" col2_disp="    28 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                        </row>
+                                    </row>
+                                </row>
+                            </row>
+                        </row>
+                        <row id="34" col0="half_nonlin_ops" col1="step_propagators.cpp:217" col2="112110" col2_disp="112,110 (2 calls)" col3="1748" col3_disp="1,748 (2 calls)" col4="5330" col4_disp=" 5,330 (10 calls)" col5="" col6="">
+                            <row id="16" col0="real" col1="hls_x_complex.h:64" col2="16" col2_disp="    16 (8 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="16" col2_disp="    16 (8 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="27" col0="operator*=" col1="hls_x_complex.h:88" col2="1616" col2_disp=" 1,616 (4 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="14" col2_disp="    14 (2 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="20" col0="operator*=" col1="hls_x_complex.h:95" col2="2724" col2_disp=" 2,724 (2 calls)" col3="" col4="" col5="" col6="">
+                                <row id="16" col0="real" col1="hls_x_complex.h:64" col2="8" col2_disp="     8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="8" col2_disp="     8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="14" col2_disp="    14 (2 calls)" col3="" col4="" col5="" col6=""/>
+                            </row>
+                            <row id="8" col0="exp&lt;64, 32&gt;" col1="hls_exp_apfixed.h:13" col2="" col3="430" col3_disp=" 430 (2 calls)" col4="70" col4_disp="    70 (10 calls)" col5="" col6=""/>
+                            <row id="10" col0="cordic_circ_apfixed&lt;34, 3, 0&gt;" col1="hls_cordic_apfixed.h:51" col2="" col3="982" col3_disp=" 982 (2 calls)" col4="4910" col4_disp=" 4,910 (10 calls)" col5="" col6=""/>
+                        </row>
+                        <row id="35" col0="adi_y" col1="step_propagators.cpp:156" col2="74384" col3="1934" col4="88902" col5="51043" col6="">
+                            <row id="16" col0="real" col1="hls_x_complex.h:64" col2="4" col2_disp="     4 (2 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="4" col2_disp="     4 (2 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="56" col2_disp="    56 (8 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="31" col0="operator-" col1="hls_x_complex.h:257" col2="1028" col2_disp=" 1,028 (4 calls)" col3="36" col3_disp="  36 (4 calls)" col4="20" col4_disp="    20 (4 calls)" col5="14" col5_disp="    14 (4 calls)" col6="">
+                                <row id="16" col0="real" col1="hls_x_complex.h:64" col2="8" col2_disp="     8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                <row id="30" col0="real" col1="hls_x_complex.h:66" col2="16" col2_disp="    16 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="8" col2_disp="     8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                <row id="22" col0="imag" col1="hls_x_complex.h:71" col2="16" col2_disp="    16 (4 calls)" col3="" col4="" col5="" col6=""/>
+                            </row>
+                            <row id="13" col0="operator-" col1="hls_x_complex.h:243" col2="2235" col2_disp=" 2,235 (5 calls)" col3="51" col3_disp="  51 (5 calls)" col4="39" col4_disp="    39 (5 calls)" col5="19" col5_disp="    19 (5 calls)" col6="">
+                                <row id="32" col0="operator-=" col1="hls_x_complex.h:219" col2="2215" col2_disp=" 2,215 (5 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="16" col0="real" col1="hls_x_complex.h:64" col2="10" col2_disp="    10 (5 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="10" col2_disp="    10 (5 calls)" col3="" col4="" col5="" col6=""/>
+                                </row>
+                            </row>
+                            <row id="17" col0="operator+" col1="hls_x_complex.h:200" col2="4994" col2_disp=" 4,994 (11 calls)" col3="99" col3_disp="  99 (11 calls)" col4="63" col4_disp="    63 (11 calls)" col5="43" col5_disp="    43 (11 calls)" col6="">
+                                <row id="29" col0="operator+=" col1="hls_x_complex.h:178" col2="4895" col2_disp=" 4,895 (11 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="16" col0="real" col1="hls_x_complex.h:64" col2="22" col2_disp="    22 (11 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="22" col2_disp="    22 (11 calls)" col3="" col4="" col5="" col6=""/>
+                                </row>
+                            </row>
+                            <row id="28" col0="operator*" col1="hls_x_complex.h:119" col2="5464" col2_disp=" 5,464 (4 calls)" col3="100" col3_disp=" 100 (4 calls)" col4="12" col4_disp="    12 (4 calls)" col5="12" col5_disp="    12 (4 calls)" col6="">
+                                <row id="20" col0="operator*=" col1="hls_x_complex.h:95" col2="5448" col2_disp=" 5,448 (4 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="16" col0="real" col1="hls_x_complex.h:64" col2="16" col2_disp="    16 (8 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="16" col2_disp="    16 (8 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="28" col2_disp="    28 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                </row>
+                            </row>
+                            <row id="18" col0="compute_b_vector" col1="step_propagators.cpp:72" col2="11460" col3="301" col4="25341" col5="5473" col6="">
+                                <row id="28" col0="operator*" col1="hls_x_complex.h:119" col2="9562" col2_disp=" 9,562 (7 calls)" col3="189" col3_disp=" 189 (7 calls)" col4="20682" col4_disp="20,682 (766 calls)" col5="84" col5_disp="    84 (4 calls)" col6="">
+                                    <row id="20" col0="operator*=" col1="hls_x_complex.h:95" col2="9534" col2_disp=" 9,534 (7 calls)" col3="" col4="" col5="" col6="">
+                                        <row id="16" col0="real" col1="hls_x_complex.h:64" col2="28" col2_disp="    28 (14 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="28" col2_disp="    28 (14 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="49" col2_disp="    49 (7 calls)" col3="" col4="" col5="" col6=""/>
+                                    </row>
+                                </row>
+                                <row id="17" col0="operator+" col1="hls_x_complex.h:200" col2="1816" col2_disp=" 1,816 (4 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="29" col0="operator+=" col1="hls_x_complex.h:178" col2="1780" col2_disp=" 1,780 (4 calls)" col3="" col4="" col5="" col6="">
+                                        <row id="16" col0="real" col1="hls_x_complex.h:64" col2="8" col2_disp="     8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="8" col2_disp="     8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                    </row>
+                                </row>
+                            </row>
+                            <row id="24" col0="custom_thomas_solver" col1="step_propagators.cpp:31" col2="25257" col3="561" col4="46102" col5="29686" col6="">
+                                <row id="11" col0="operator/" col1="hls_x_complex.h:161" col2="16035" col2_disp="16,035 (5 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="14" col0="operator/=" col1="hls_x_complex.h:139" col2="16015" col2_disp="16,015 (5 calls)" col3="" col4="" col5="" col6="">
+                                        <row id="16" col0="real" col1="hls_x_complex.h:64" col2="40" col2_disp="    40 (20 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="20" col2_disp="    20 (10 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="70" col2_disp="    70 (10 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="28" col0="operator*" col1="hls_x_complex.h:119" col2="13660" col2_disp="13,660 (10 calls)" col3="" col4="" col5="" col6="">
+                                            <row id="20" col0="operator*=" col1="hls_x_complex.h:95" col2="13620" col2_disp="13,620 (10 calls)" col3="" col4="" col5="" col6="">
+                                                <row id="16" col0="real" col1="hls_x_complex.h:64" col2="40" col2_disp="    40 (20 calls)" col3="" col4="" col5="" col6=""/>
+                                                <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="40" col2_disp="    40 (20 calls)" col3="" col4="" col5="" col6=""/>
+                                                <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="70" col2_disp="    70 (10 calls)" col3="" col4="" col5="" col6=""/>
+                                            </row>
+                                        </row>
+                                    </row>
+                                </row>
+                                <row id="28" col0="operator*" col1="hls_x_complex.h:119" col2="6830" col2_disp=" 6,830 (5 calls)" col3="100" col3_disp=" 100 (4 calls)" col4="12750" col4_disp="12,750 (510 calls)" col5="42" col5_disp="    42 (2 calls)" col6="">
+                                    <row id="20" col0="operator*=" col1="hls_x_complex.h:95" col2="6810" col2_disp=" 6,810 (5 calls)" col3="" col4="" col5="" col6="">
+                                        <row id="16" col0="real" col1="hls_x_complex.h:64" col2="20" col2_disp="    20 (10 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="20" col2_disp="    20 (10 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="35" col2_disp="    35 (5 calls)" col3="" col4="" col5="" col6=""/>
+                                    </row>
+                                </row>
+                                <row id="13" col0="operator-" col1="hls_x_complex.h:243" col2="2235" col2_disp=" 2,235 (5 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="32" col0="operator-=" col1="hls_x_complex.h:219" col2="2215" col2_disp=" 2,215 (5 calls)" col3="" col4="" col5="" col6="">
+                                        <row id="16" col0="real" col1="hls_x_complex.h:64" col2="10" col2_disp="    10 (5 calls)" col3="" col4="" col5="" col6=""/>
+                                        <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="10" col2_disp="    10 (5 calls)" col3="" col4="" col5="" col6=""/>
+                                    </row>
+                                </row>
+                                <row id="14" col0="operator/=" col1="hls_x_complex.h:139" col2="" col3="215" col3_disp=" 215 (5 calls)" col4="21973" col4_disp="21,973 (511 calls)" col5="123" col5_disp="   123 (3 calls)" col6=""/>
+                            </row>
+                            <row id="11" col0="operator/" col1="hls_x_complex.h:161" col2="6414" col2_disp=" 6,414 (2 calls)" col3="106" col3_disp=" 106 (2 calls)" col4="106" col4_disp="   106 (2 calls)" col5="90" col5_disp="    90 (2 calls)" col6="">
+                                <row id="14" col0="operator/=" col1="hls_x_complex.h:139" col2="6406" col2_disp=" 6,406 (2 calls)" col3="90" col3_disp="  90 (2 calls)" col4="90" col4_disp="    90 (2 calls)" col5="82" col5_disp="    82 (2 calls)" col6="">
+                                    <row id="16" col0="real" col1="hls_x_complex.h:64" col2="16" col2_disp="    16 (8 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="8" col2_disp="     8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="28" col2_disp="    28 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                    <row id="28" col0="operator*" col1="hls_x_complex.h:119" col2="5464" col2_disp=" 5,464 (4 calls)" col3="" col4="" col5="" col6="">
+                                        <row id="20" col0="operator*=" col1="hls_x_complex.h:95" col2="5448" col2_disp=" 5,448 (4 calls)" col3="" col4="" col5="" col6="">
+                                            <row id="16" col0="real" col1="hls_x_complex.h:64" col2="16" col2_disp="    16 (8 calls)" col3="" col4="" col5="" col6=""/>
+                                            <row id="12" col0="imag" col1="hls_x_complex.h:69" col2="16" col2_disp="    16 (8 calls)" col3="" col4="" col5="" col6=""/>
+                                            <row id="33" col0="x_complex" col1="hls_x_complex.h:48" col2="28" col2_disp="    28 (4 calls)" col3="" col4="" col5="" col6=""/>
+                                        </row>
+                                    </row>
+                                </row>
+                            </row>
+                        </row>
+                    </row>
+                </row>
+            </rows>
+            <notes>
+                <note name="*" desc="Exceeded design size warning message threshold"/>
+            </notes>
+        </hiertable>
+    </item>
+    <item name="Design Size Message Settings">
+        <table>
+            <keys size="3">Message Setting, Value, Description</keys>
+            <column name="config_compile -design_size_maximum_warning">100000, Show a warning when total design instructions exceeds this value</column>
+        </table>
+    </item>
+</design_size>
+

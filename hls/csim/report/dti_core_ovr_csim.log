@@ -1,0 +1,9 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch CLANG as the compiler.
+   Compiling ../../../source/test_utils.cpp in debug mode
+   Compiling ../../../source/step_propagators_tb.cpp in debug mode
+   Compiling ../../../source/step_propagators.cpp in debug mode
+   Compiling ../../../source/dti_core_ovr.cpp in debug mode
+   Generating csim.exe
+ERR: [SIM 100] CSim failed with errors.
+INFO: [SIM 3] *************** CSIM finish ***************

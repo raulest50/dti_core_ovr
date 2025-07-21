@@ -1,0 +1,57 @@
+  **** HLS Build v2025.1 6135595
+INFO: [HLS 200-2005] Using work_dir C:/Vws25/dti_hls_core 
+INFO: [HLS 200-2176] Writing Vitis IDE component file C:/Vws25/dti_hls_core/vitis-comp.json
+INFO: [HLS 200-10] Creating and opening component 'C:/Vws25/dti_hls_core'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2025.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-2174] Applying component config ini file C:/Vws25/dti_hls_core/hls_config.cfg
+INFO: [HLS 200-1465] Applying config ini 'syn.file=./source/dti_core_ovr.cpp' from C:/Vws25/dti_hls_core/hls_config.cfg(10)
+INFO: [HLS 200-10] Adding design file 'C:/Vws25/dti_hls_core/source/dti_core_ovr.cpp' to the project
+INFO: [HLS 200-1465] Applying config ini 'syn.file=./source/hls_stub.h' from C:/Vws25/dti_hls_core/hls_config.cfg(11)
+INFO: [HLS 200-10] Adding design file 'C:/Vws25/dti_hls_core/source/hls_stub.h' to the project
+INFO: [HLS 200-1465] Applying config ini 'syn.file=./source/step_propagators.cpp' from C:/Vws25/dti_hls_core/hls_config.cfg(12)
+INFO: [HLS 200-10] Adding design file 'C:/Vws25/dti_hls_core/source/step_propagators.cpp' to the project
+INFO: [HLS 200-1465] Applying config ini 'syn.file=./source/step_propagators.h' from C:/Vws25/dti_hls_core/hls_config.cfg(13)
+INFO: [HLS 200-10] Adding design file 'C:/Vws25/dti_hls_core/source/step_propagators.h' to the project
+INFO: [HLS 200-1465] Applying config ini 'tb.file=./source/validation_data_main' from C:/Vws25/dti_hls_core/hls_config.cfg(15)
+INFO: [HLS 200-10] Adding test bench file 'C:/Vws25/dti_hls_core/source/validation_data_main' to the project
+INFO: [HLS 200-1465] Applying config ini 'tb.file=./source/step_propagators_tb.cpp' from C:/Vws25/dti_hls_core/hls_config.cfg(19)
+INFO: [HLS 200-10] Adding test bench file 'C:/Vws25/dti_hls_core/source/step_propagators_tb.cpp' to the project
+INFO: [HLS 200-1465] Applying config ini 'tb.file=./source/test_utils.cpp' from C:/Vws25/dti_hls_core/hls_config.cfg(20)
+INFO: [HLS 200-10] Adding test bench file 'C:/Vws25/dti_hls_core/source/test_utils.cpp' to the project
+INFO: [HLS 200-1465] Applying config ini 'tb.file=./source/test_utils.h' from C:/Vws25/dti_hls_core/hls_config.cfg(21)
+INFO: [HLS 200-10] Adding test bench file 'C:/Vws25/dti_hls_core/source/test_utils.h' to the project
+INFO: [HLS 200-1465] Applying config ini 'syn.top=dti_core_ovr' from C:/Vws25/dti_hls_core/hls_config.cfg(7)
+INFO: [HLS 200-1465] Applying config ini 'flow_target=vivado' from C:/Vws25/dti_hls_core/hls_config.cfg(4)
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2025.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1465] Applying config ini 'part=xck26-sfvc784-2LV-c' from C:/Vws25/dti_hls_core/hls_config.cfg(1)
+INFO: [HLS 200-1611] Setting target device to 'xck26-sfvc784-2LV-c'
+INFO: [HLS 200-1465] Applying config ini 'clock=200' from C:/Vws25/dti_hls_core/hls_config.cfg(8)
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 200ns.
+INFO: [HLS 200-1465] Applying config ini 'clock_uncertainty=2%' from C:/Vws25/dti_hls_core/hls_config.cfg(9)
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 4ns.
+INFO: [HLS 200-1465] Applying config ini 'csim.clean=1' from C:/Vws25/dti_hls_core/hls_config.cfg(14)
+INFO: [HLS 200-1465] Applying config ini 'package.output.format=ip_catalog' from C:/Vws25/dti_hls_core/hls_config.cfg(5)
+INFO: [HLS 200-2176] Writing Vitis IDE component file C:/Vws25/dti_hls_core/vitis-comp.json
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 1 seconds. CPU system time: 2 seconds. Elapsed time: 8.951 seconds; current allocated memory: 138.949 MB.
+INFO: [HLS 200-10] Analyzing design file 'source/step_propagators.cpp' ... 
+WARNING: [HLS 207-1016] unknown warning group '-Wmisleading-indentation', ignored (C:/Xilinx/2025.1/Vitis/common/technology/autopilot/etc/hls_sqrt_apfixed.h:16:34)
+WARNING: [HLS 214-111] Static scalars and arrays declared inside a dataflow region will be treated like local variables (source/step_propagators.cpp:262:19)
+Resolution: For help on HLS 214-111 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2025.1%20English&url=ug1448-hls-guidance&resourceid=214-111.html
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region (source/step_propagators.cpp:260:9)
+Resolution: For help on HLS 214-114 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2025.1%20English&url=ug1448-hls-guidance&resourceid=214-114.html
+WARNING: [HLS 200-471] Dataflow form checks found 2 issue(s) in file source/step_propagators.cpp
+Resolution: For help on HLS 200-471 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2025.1%20English&url=ug1448-hls-guidance&resourceid=200-471.html
+INFO: [HLS 200-10] Analyzing design file 'source/dti_core_ovr.cpp' ... 
+WARNING: [HLS 207-1016] unknown warning group '-Wmisleading-indentation', ignored (C:/Xilinx/2025.1/Vitis/common/technology/autopilot/etc/hls_sqrt_apfixed.h:16:34)
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 81.161 seconds; current allocated memory: 149.293 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+WARNING: [HLS 200-1995] There were 261,199 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details (C:/Vws25/dti_hls_core/hls/syn/report/csynth_design_size.rpt:2)
+WARNING: [HLS 200-1995] There were 356,317,917 instructions in the design after the 'Unroll/Inline' phase of compilation. See the Design Size Report for more details (C:/Vws25/dti_hls_core/hls/syn/report/csynth_design_size.rpt:2)
+WARNING: [HLS 200-1995] There were 117,591,457 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details (C:/Vws25/dti_hls_core/hls/syn/report/csynth_design_size.rpt:2)
+WARNING: [HLS 200-1995] There were 114,400,589 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details (C:/Vws25/dti_hls_core/hls/syn/report/csynth_design_size.rpt:2)
+WARNING: [HLS 200-1995] There were 52,681,353 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details (C:/Vws25/dti_hls_core/hls/syn/report/csynth_design_size.rpt:2)
+ERROR: [HLS 200-1715] Encountered problem during source synthesis
+ERROR: Pre-synthesis failed.
+INFO: [HLS 200-112] Total CPU user time: 1373 seconds. Total CPU system time: 6 seconds. Total elapsed time: 17923.8 seconds; peak allocated memory: 203.152 MB.

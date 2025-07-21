@@ -1,0 +1,29 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch CLANG as the compiler.
+   Compiling ../../../../testbench/test_utils.cpp in debug mode
+   Compiling ../../../../testbench/step_propagators_tb.cpp in debug mode
+csim.mk:94: recipe for target 'obj/step_propagators_tb.o' failed
+In file included from ../../../../testbench/test_utils.cpp:2:
+In file included from ../../../../testbench/test_utils.h:7:
+In file included from C:/Xilinx/2025.1/Vitis/include/hls_x_complex.h:13:
+In file included from C:/Xilinx/2025.1/Vitis/include/ap_fixed.h:9:
+In file included from C:/Xilinx/2025.1/Vitis/include/etc/ap_common.h:677:
+In file included from C:/Xilinx/2025.1/Vitis/include/etc/ap_private.h:68:
+In file included from C:/Xilinx/2025.1/Vitis/include/hls_half.h:26:
+In file included from C:/Xilinx/2025.1/Vitis/include/etc/hls_half_fpo.h:19:
+In file included from C:/Xilinx/2025.1/Vitis/include/hls_fpo.h:140:
+In file included from C:/Xilinx/2025.1/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:150:
+C:/Xilinx/2025.1/Vitis/include/gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+C:/Xilinx/2025.1/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+../../../../testbench/step_propagators_tb.cpp:3:10: fatal error: 'step_propagators.h' file not found
+#include "step_propagators.h"
+         ^~~~~~~~~~~~~~~~~~~~
+1 error generated.
+make: *** [obj/step_propagators_tb.o] Error 1
+ERR: [SIM 100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 3] *************** CSIM finish ***************

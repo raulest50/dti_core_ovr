@@ -1,0 +1,63 @@
+  **** HLS Build v2025.1 6135595
+INFO: [HLS 200-2005] Using work_dir C:/Vws25/dti_hls_core 
+INFO: [HLS 200-2176] Writing Vitis IDE component file C:/Vws25/dti_hls_core/vitis-comp.json
+INFO: [HLS 200-10] Creating and opening component 'C:/Vws25/dti_hls_core'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2025.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-2174] Applying component config ini file C:/Vws25/dti_hls_core/hls_config.cfg
+INFO: [HLS 200-1465] Applying config ini 'syn.file=./source/dti_core_ovr.cpp' from C:/Vws25/dti_hls_core/hls_config.cfg(10)
+INFO: [HLS 200-10] Adding design file 'C:/Vws25/dti_hls_core/source/dti_core_ovr.cpp' to the project
+INFO: [HLS 200-1465] Applying config ini 'syn.file=./source/hls_stub.h' from C:/Vws25/dti_hls_core/hls_config.cfg(11)
+INFO: [HLS 200-10] Adding design file 'C:/Vws25/dti_hls_core/source/hls_stub.h' to the project
+INFO: [HLS 200-1465] Applying config ini 'syn.file=./source/step_propagators.cpp' from C:/Vws25/dti_hls_core/hls_config.cfg(12)
+INFO: [HLS 200-10] Adding design file 'C:/Vws25/dti_hls_core/source/step_propagators.cpp' to the project
+INFO: [HLS 200-1465] Applying config ini 'syn.file=./source/step_propagators.h' from C:/Vws25/dti_hls_core/hls_config.cfg(13)
+INFO: [HLS 200-10] Adding design file 'C:/Vws25/dti_hls_core/source/step_propagators.h' to the project
+INFO: [HLS 200-1465] Applying config ini 'tb.file=./source/validation_data_main' from C:/Vws25/dti_hls_core/hls_config.cfg(15)
+INFO: [HLS 200-10] Adding test bench file 'C:/Vws25/dti_hls_core/source/validation_data_main' to the project
+INFO: [HLS 200-1465] Applying config ini 'tb.file=./source/step_propagators_tb.cpp' from C:/Vws25/dti_hls_core/hls_config.cfg(16)
+INFO: [HLS 200-10] Adding test bench file 'C:/Vws25/dti_hls_core/source/step_propagators_tb.cpp' to the project
+INFO: [HLS 200-1465] Applying config ini 'tb.file=./source/test_utils.cpp' from C:/Vws25/dti_hls_core/hls_config.cfg(17)
+INFO: [HLS 200-10] Adding test bench file 'C:/Vws25/dti_hls_core/source/test_utils.cpp' to the project
+INFO: [HLS 200-1465] Applying config ini 'tb.file=./source/test_utils.h' from C:/Vws25/dti_hls_core/hls_config.cfg(18)
+INFO: [HLS 200-10] Adding test bench file 'C:/Vws25/dti_hls_core/source/test_utils.h' to the project
+INFO: [HLS 200-1465] Applying config ini 'syn.top=dti_core_ovr' from C:/Vws25/dti_hls_core/hls_config.cfg(7)
+INFO: [HLS 200-1465] Applying config ini 'flow_target=vivado' from C:/Vws25/dti_hls_core/hls_config.cfg(4)
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2025.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1465] Applying config ini 'part=xck26-sfvc784-2LV-c' from C:/Vws25/dti_hls_core/hls_config.cfg(1)
+INFO: [HLS 200-1611] Setting target device to 'xck26-sfvc784-2LV-c'
+INFO: [HLS 200-1465] Applying config ini 'clock=200' from C:/Vws25/dti_hls_core/hls_config.cfg(8)
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 200ns.
+INFO: [HLS 200-1465] Applying config ini 'clock_uncertainty=2%' from C:/Vws25/dti_hls_core/hls_config.cfg(9)
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 4ns.
+INFO: [HLS 200-1465] Applying config ini 'csim.clean=0' from C:/Vws25/dti_hls_core/hls_config.cfg(14)
+INFO: [HLS 200-1465] Applying config ini 'package.output.format=ip_catalog' from C:/Vws25/dti_hls_core/hls_config.cfg(5)
+INFO: [HLS 200-2176] Writing Vitis IDE component file C:/Vws25/dti_hls_core/vitis-comp.json
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+   Compiling ../../../source/test_utils.cpp in debug mode
+   Generating csim.exe
+In file included from ../../../source/test_utils.cpp:2:
+In file included from ../../../source/test_utils.h:7:
+In file included from C:/Xilinx/2025.1/Vitis/include/hls_x_complex.h:13:
+In file included from C:/Xilinx/2025.1/Vitis/include/ap_fixed.h:9:
+In file included from C:/Xilinx/2025.1/Vitis/include/etc/ap_common.h:677:
+In file included from C:/Xilinx/2025.1/Vitis/include/etc/ap_private.h:68:
+In file included from C:/Xilinx/2025.1/Vitis/include/hls_half.h:26:
+In file included from C:/Xilinx/2025.1/Vitis/include/etc/hls_half_fpo.h:19:
+In file included from C:/Xilinx/2025.1/Vitis/include/hls_fpo.h:140:
+In file included from C:/Xilinx/2025.1/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:150:
+C:/Xilinx/2025.1/Vitis/include/gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+C:/Xilinx/2025.1/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+@E Simulation failed with unknown error.
+ERROR: [SIM 211-100] CSim failed with errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+ERROR: 4
+INFO: [HLS 200-112] Total CPU user time: 1 seconds. Total CPU system time: 1 seconds. Total elapsed time: 12.7 seconds; peak allocated memory: 138.250 MB.

@@ -1,0 +1,189 @@
+================================================================
+== Design Size Report
+================================================================
+
+* Total Instructions per Compilation Phase
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Phase         | Step                        | Instructions | Description                                                                            |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Compile/Link  |                             | 261,199 *    | After all functions are compiled and linked into a single design                       |
+|               |                             |              |                                                                                        |
+| Unroll/Inline |                             |              | After user unroll and inline pragmas are applied                                       |
+|               | (1) unroll                  |  36,783      | user unroll pragmas are applied                                                        |
+|               | (2) simplification          |  12,021      | simplification of applied user unroll pragmas                                          |
+|               | (3) inline                  |   9,453      | user inline pragmas are applied                                                        |
+|               | (4) simplification          |   5,815      | simplification of applied user inline pragmas                                          |
+|               |                             |              |                                                                                        |
+| Array/Struct  |                             |              | After user array partition and struct aggregate/disaggregate pragmas are applied       |
+|               | (1) array partition         | 174,867 *    | user array partition pragmas are applied                                               |
+|               | (2) simplification          | 203,146 *    | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
+|               | (3) aggregate/disaggregate  | 203,202 *    | user struct aggregate/disaggregate pragmas are applied                                 |
+|               | (4) array reshape           | 203,520 *    | apply array reshape pragmas                                                            |
+|               | (5) access patterns         | 207,348 *    | array access pattern optmizations                                                      |
+|               |                             |              |                                                                                        |
+| Performance   |                             |              | After transformations are applied to meet performance pragma targets                   |
+|               | (1) loop simplification     | 195,663 *    | loop and instruction simplification                                                    |
+|               | (2) parallelization         | 136,861 *    | loops are unrolled or pipelined to meet performance targets                            |
+|               | (3) array partition         | 137,227 *    | arrays are partitioned to meet performance targets                                     |
+|               | (4) simplification          | 134,523 *    | simplification of design after performance transformations                             |
+|               |                             |              |                                                                                        |
+| HW Transforms |                             |              | After hardware transfomations                                                          |
+|               | (1) lowering                | 134,479 *    | initial conversion to HW specific instructions                                         |
+|               | (2) optimizations           | 134,247 *    | high level synthesis optimizations                                                     |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+    * - Exceeded design size warning message threshold
+
+* Instructions per Function for each Compilation Phase
++--------------------------------------+--------------------------+-------------------+-----------------+--------------------+-------------------+---------------+
+| Function                             | Location                 | Compile/Link      | Unroll/Inline   | Array/Struct       | Performance       | HW Transforms |
++--------------------------------------+--------------------------+-------------------+-----------------+--------------------+-------------------+---------------+
+| + dti_core_ovr                       | dti_core_ovr.cpp:22      | 261,199 *         | 5,815           | 207,348 *          | 134,523 *         | 134,247 *     |
+|  + propagation_step                  | step_propagators.cpp:251 | 261,097           | 5,741           | 207,272            | 134,447           | 134,097       |
+|   + adi_x                            | step_propagators.cpp:96  | 74,384            | 1,934           | 85,820             | 47,961            |               |
+|      real                            | hls_x_complex.h:64       |      4 (2 calls)  |                 |                    |                   |               |
+|      imag                            | hls_x_complex.h:69       |      4 (2 calls)  |                 |                    |                   |               |
+|      x_complex                       | hls_x_complex.h:48       |     56 (8 calls)  |                 |                    |                   |               |
+|    + operator-                       | hls_x_complex.h:257      |  1,028 (4 calls)  |   36 (4 calls)  |     20 (4 calls)   |     14 (4 calls)  |               |
+|       real                           | hls_x_complex.h:64       |      8 (4 calls)  |                 |                    |                   |               |
+|       real                           | hls_x_complex.h:66       |     16 (4 calls)  |                 |                    |                   |               |
+|       imag                           | hls_x_complex.h:69       |      8 (4 calls)  |                 |                    |                   |               |
+|       imag                           | hls_x_complex.h:71       |     16 (4 calls)  |                 |                    |                   |               |
+|    + operator-                       | hls_x_complex.h:243      |  2,235 (5 calls)  |   51 (5 calls)  |     39 (5 calls)   |     19 (5 calls)  |               |
+|     + operator-=                     | hls_x_complex.h:219      |  2,215 (5 calls)  |                 |                    |                   |               |
+|        real                          | hls_x_complex.h:64       |     10 (5 calls)  |                 |                    |                   |               |
+|        imag                          | hls_x_complex.h:69       |     10 (5 calls)  |                 |                    |                   |               |
+|    + operator+                       | hls_x_complex.h:200      |  4,994 (11 calls) |   99 (11 calls) |     63 (11 calls)  |     43 (11 calls) |               |
+|     + operator+=                     | hls_x_complex.h:178      |  4,895 (11 calls) |                 |                    |                   |               |
+|        real                          | hls_x_complex.h:64       |     22 (11 calls) |                 |                    |                   |               |
+|        imag                          | hls_x_complex.h:69       |     22 (11 calls) |                 |                    |                   |               |
+|    + operator*                       | hls_x_complex.h:119      |  5,464 (4 calls)  |  100 (4 calls)  |     12 (4 calls)   |     12 (4 calls)  |               |
+|     + operator*=                     | hls_x_complex.h:95       |  5,448 (4 calls)  |                 |                    |                   |               |
+|        real                          | hls_x_complex.h:64       |     16 (8 calls)  |                 |                    |                   |               |
+|        imag                          | hls_x_complex.h:69       |     16 (8 calls)  |                 |                    |                   |               |
+|        x_complex                     | hls_x_complex.h:48       |     28 (4 calls)  |                 |                    |                   |               |
+|    + compute_b_vector                | step_propagators.cpp:72  | 11,460            |  301            | 25,341             |  5,473            |               |
+|     + operator*                      | hls_x_complex.h:119      |  9,562 (7 calls)  |  189 (7 calls)  | 20,682 (766 calls) |     84 (4 calls)  |               |
+|      + operator*=                    | hls_x_complex.h:95       |  9,534 (7 calls)  |                 |                    |                   |               |
+|         real                         | hls_x_complex.h:64       |     28 (14 calls) |                 |                    |                   |               |
+|         imag                         | hls_x_complex.h:69       |     28 (14 calls) |                 |                    |                   |               |
+|         x_complex                    | hls_x_complex.h:48       |     49 (7 calls)  |                 |                    |                   |               |
+|     + operator+                      | hls_x_complex.h:200      |  1,816 (4 calls)  |                 |                    |                   |               |
+|      + operator+=                    | hls_x_complex.h:178      |  1,780 (4 calls)  |                 |                    |                   |               |
+|         real                         | hls_x_complex.h:64       |      8 (4 calls)  |                 |                    |                   |               |
+|         imag                         | hls_x_complex.h:69       |      8 (4 calls)  |                 |                    |                   |               |
+|    + custom_thomas_solver            | step_propagators.cpp:31  | 25,257            |  561            | 46,102             | 29,686            |               |
+|     + operator/                      | hls_x_complex.h:161      | 16,035 (5 calls)  |                 |                    |                   |               |
+|      + operator/=                    | hls_x_complex.h:139      | 16,015 (5 calls)  |                 |                    |                   |               |
+|         real                         | hls_x_complex.h:64       |     40 (20 calls) |                 |                    |                   |               |
+|         imag                         | hls_x_complex.h:69       |     20 (10 calls) |                 |                    |                   |               |
+|         x_complex                    | hls_x_complex.h:48       |     70 (10 calls) |                 |                    |                   |               |
+|       + operator*                    | hls_x_complex.h:119      | 13,660 (10 calls) |                 |                    |                   |               |
+|        + operator*=                  | hls_x_complex.h:95       | 13,620 (10 calls) |                 |                    |                   |               |
+|           real                       | hls_x_complex.h:64       |     40 (20 calls) |                 |                    |                   |               |
+|           imag                       | hls_x_complex.h:69       |     40 (20 calls) |                 |                    |                   |               |
+|           x_complex                  | hls_x_complex.h:48       |     70 (10 calls) |                 |                    |                   |               |
+|     + operator*                      | hls_x_complex.h:119      |  6,830 (5 calls)  |  100 (4 calls)  | 12,750 (510 calls) |     42 (2 calls)  |               |
+|      + operator*=                    | hls_x_complex.h:95       |  6,810 (5 calls)  |                 |                    |                   |               |
+|         real                         | hls_x_complex.h:64       |     20 (10 calls) |                 |                    |                   |               |
+|         imag                         | hls_x_complex.h:69       |     20 (10 calls) |                 |                    |                   |               |
+|         x_complex                    | hls_x_complex.h:48       |     35 (5 calls)  |                 |                    |                   |               |
+|     + operator-                      | hls_x_complex.h:243      |  2,235 (5 calls)  |                 |                    |                   |               |
+|      + operator-=                    | hls_x_complex.h:219      |  2,215 (5 calls)  |                 |                    |                   |               |
+|         real                         | hls_x_complex.h:64       |     10 (5 calls)  |                 |                    |                   |               |
+|         imag                         | hls_x_complex.h:69       |     10 (5 calls)  |                 |                    |                   |               |
+|       operator/=                     | hls_x_complex.h:139      |                   |  215 (5 calls)  | 21,973 (511 calls) |    123 (3 calls)  |               |
+|    + operator/                       | hls_x_complex.h:161      |  6,414 (2 calls)  |  106 (2 calls)  |    106 (2 calls)   |     90 (2 calls)  |               |
+|     + operator/=                     | hls_x_complex.h:139      |  6,406 (2 calls)  |   90 (2 calls)  |     90 (2 calls)   |     82 (2 calls)  |               |
+|        real                          | hls_x_complex.h:64       |     16 (8 calls)  |                 |                    |                   |               |
+|        imag                          | hls_x_complex.h:69       |      8 (4 calls)  |                 |                    |                   |               |
+|        x_complex                     | hls_x_complex.h:48       |     28 (4 calls)  |                 |                    |                   |               |
+|      + operator*                     | hls_x_complex.h:119      |  5,464 (4 calls)  |                 |                    |                   |               |
+|       + operator*=                   | hls_x_complex.h:95       |  5,448 (4 calls)  |                 |                    |                   |               |
+|          real                        | hls_x_complex.h:64       |     16 (8 calls)  |                 |                    |                   |               |
+|          imag                        | hls_x_complex.h:69       |     16 (8 calls)  |                 |                    |                   |               |
+|          x_complex                   | hls_x_complex.h:48       |     28 (4 calls)  |                 |                    |                   |               |
+|   + half_nonlin_ops                  | step_propagators.cpp:217 | 112,110 (2 calls) | 1,748 (2 calls) |  5,330 (10 calls)  |                   |               |
+|      real                            | hls_x_complex.h:64       |     16 (8 calls)  |                 |                    |                   |               |
+|      imag                            | hls_x_complex.h:69       |     16 (8 calls)  |                 |                    |                   |               |
+|      operator*=                      | hls_x_complex.h:88       |  1,616 (4 calls)  |                 |                    |                   |               |
+|      x_complex                       | hls_x_complex.h:48       |     14 (2 calls)  |                 |                    |                   |               |
+|    + operator*=                      | hls_x_complex.h:95       |  2,724 (2 calls)  |                 |                    |                   |               |
+|       real                           | hls_x_complex.h:64       |      8 (4 calls)  |                 |                    |                   |               |
+|       imag                           | hls_x_complex.h:69       |      8 (4 calls)  |                 |                    |                   |               |
+|       x_complex                      | hls_x_complex.h:48       |     14 (2 calls)  |                 |                    |                   |               |
+|      exp<64, 32>                     | hls_exp_apfixed.h:13     |                   |  430 (2 calls)  |     70 (10 calls)  |                   |               |
+|      cordic_circ_apfixed<34, 3, 0... | hls_cordic_apfixed.h:51  |                   |  982 (2 calls)  |  4,910 (10 calls)  |                   |               |
+|   + adi_y                            | step_propagators.cpp:156 | 74,384            | 1,934           | 88,902             | 51,043            |               |
+|      real                            | hls_x_complex.h:64       |      4 (2 calls)  |                 |                    |                   |               |
+|      imag                            | hls_x_complex.h:69       |      4 (2 calls)  |                 |                    |                   |               |
+|      x_complex                       | hls_x_complex.h:48       |     56 (8 calls)  |                 |                    |                   |               |
+|    + operator-                       | hls_x_complex.h:257      |  1,028 (4 calls)  |   36 (4 calls)  |     20 (4 calls)   |     14 (4 calls)  |               |
+|       real                           | hls_x_complex.h:64       |      8 (4 calls)  |                 |                    |                   |               |
+|       real                           | hls_x_complex.h:66       |     16 (4 calls)  |                 |                    |                   |               |
+|       imag                           | hls_x_complex.h:69       |      8 (4 calls)  |                 |                    |                   |               |
+|       imag                           | hls_x_complex.h:71       |     16 (4 calls)  |                 |                    |                   |               |
+|    + operator-                       | hls_x_complex.h:243      |  2,235 (5 calls)  |   51 (5 calls)  |     39 (5 calls)   |     19 (5 calls)  |               |
+|     + operator-=                     | hls_x_complex.h:219      |  2,215 (5 calls)  |                 |                    |                   |               |
+|        real                          | hls_x_complex.h:64       |     10 (5 calls)  |                 |                    |                   |               |
+|        imag                          | hls_x_complex.h:69       |     10 (5 calls)  |                 |                    |                   |               |
+|    + operator+                       | hls_x_complex.h:200      |  4,994 (11 calls) |   99 (11 calls) |     63 (11 calls)  |     43 (11 calls) |               |
+|     + operator+=                     | hls_x_complex.h:178      |  4,895 (11 calls) |                 |                    |                   |               |
+|        real                          | hls_x_complex.h:64       |     22 (11 calls) |                 |                    |                   |               |
+|        imag                          | hls_x_complex.h:69       |     22 (11 calls) |                 |                    |                   |               |
+|    + operator*                       | hls_x_complex.h:119      |  5,464 (4 calls)  |  100 (4 calls)  |     12 (4 calls)   |     12 (4 calls)  |               |
+|     + operator*=                     | hls_x_complex.h:95       |  5,448 (4 calls)  |                 |                    |                   |               |
+|        real                          | hls_x_complex.h:64       |     16 (8 calls)  |                 |                    |                   |               |
+|        imag                          | hls_x_complex.h:69       |     16 (8 calls)  |                 |                    |                   |               |
+|        x_complex                     | hls_x_complex.h:48       |     28 (4 calls)  |                 |                    |                   |               |
+|    + compute_b_vector                | step_propagators.cpp:72  | 11,460            |  301            | 25,341             |  5,473            |               |
+|     + operator*                      | hls_x_complex.h:119      |  9,562 (7 calls)  |  189 (7 calls)  | 20,682 (766 calls) |     84 (4 calls)  |               |
+|      + operator*=                    | hls_x_complex.h:95       |  9,534 (7 calls)  |                 |                    |                   |               |
+|         real                         | hls_x_complex.h:64       |     28 (14 calls) |                 |                    |                   |               |
+|         imag                         | hls_x_complex.h:69       |     28 (14 calls) |                 |                    |                   |               |
+|         x_complex                    | hls_x_complex.h:48       |     49 (7 calls)  |                 |                    |                   |               |
+|     + operator+                      | hls_x_complex.h:200      |  1,816 (4 calls)  |                 |                    |                   |               |
+|      + operator+=                    | hls_x_complex.h:178      |  1,780 (4 calls)  |                 |                    |                   |               |
+|         real                         | hls_x_complex.h:64       |      8 (4 calls)  |                 |                    |                   |               |
+|         imag                         | hls_x_complex.h:69       |      8 (4 calls)  |                 |                    |                   |               |
+|    + custom_thomas_solver            | step_propagators.cpp:31  | 25,257            |  561            | 46,102             | 29,686            |               |
+|     + operator/                      | hls_x_complex.h:161      | 16,035 (5 calls)  |                 |                    |                   |               |
+|      + operator/=                    | hls_x_complex.h:139      | 16,015 (5 calls)  |                 |                    |                   |               |
+|         real                         | hls_x_complex.h:64       |     40 (20 calls) |                 |                    |                   |               |
+|         imag                         | hls_x_complex.h:69       |     20 (10 calls) |                 |                    |                   |               |
+|         x_complex                    | hls_x_complex.h:48       |     70 (10 calls) |                 |                    |                   |               |
+|       + operator*                    | hls_x_complex.h:119      | 13,660 (10 calls) |                 |                    |                   |               |
+|        + operator*=                  | hls_x_complex.h:95       | 13,620 (10 calls) |                 |                    |                   |               |
+|           real                       | hls_x_complex.h:64       |     40 (20 calls) |                 |                    |                   |               |
+|           imag                       | hls_x_complex.h:69       |     40 (20 calls) |                 |                    |                   |               |
+|           x_complex                  | hls_x_complex.h:48       |     70 (10 calls) |                 |                    |                   |               |
+|     + operator*                      | hls_x_complex.h:119      |  6,830 (5 calls)  |  100 (4 calls)  | 12,750 (510 calls) |     42 (2 calls)  |               |
+|      + operator*=                    | hls_x_complex.h:95       |  6,810 (5 calls)  |                 |                    |                   |               |
+|         real                         | hls_x_complex.h:64       |     20 (10 calls) |                 |                    |                   |               |
+|         imag                         | hls_x_complex.h:69       |     20 (10 calls) |                 |                    |                   |               |
+|         x_complex                    | hls_x_complex.h:48       |     35 (5 calls)  |                 |                    |                   |               |
+|     + operator-                      | hls_x_complex.h:243      |  2,235 (5 calls)  |                 |                    |                   |               |
+|      + operator-=                    | hls_x_complex.h:219      |  2,215 (5 calls)  |                 |                    |                   |               |
+|         real                         | hls_x_complex.h:64       |     10 (5 calls)  |                 |                    |                   |               |
+|         imag                         | hls_x_complex.h:69       |     10 (5 calls)  |                 |                    |                   |               |
+|       operator/=                     | hls_x_complex.h:139      |                   |  215 (5 calls)  | 21,973 (511 calls) |    123 (3 calls)  |               |
+|    + operator/                       | hls_x_complex.h:161      |  6,414 (2 calls)  |  106 (2 calls)  |    106 (2 calls)   |     90 (2 calls)  |               |
+|     + operator/=                     | hls_x_complex.h:139      |  6,406 (2 calls)  |   90 (2 calls)  |     90 (2 calls)   |     82 (2 calls)  |               |
+|        real                          | hls_x_complex.h:64       |     16 (8 calls)  |                 |                    |                   |               |
+|        imag                          | hls_x_complex.h:69       |      8 (4 calls)  |                 |                    |                   |               |
+|        x_complex                     | hls_x_complex.h:48       |     28 (4 calls)  |                 |                    |                   |               |
+|      + operator*                     | hls_x_complex.h:119      |  5,464 (4 calls)  |                 |                    |                   |               |
+|       + operator*=                   | hls_x_complex.h:95       |  5,448 (4 calls)  |                 |                    |                   |               |
+|          real                        | hls_x_complex.h:64       |     16 (8 calls)  |                 |                    |                   |               |
+|          imag                        | hls_x_complex.h:69       |     16 (8 calls)  |                 |                    |                   |               |
+|          x_complex                   | hls_x_complex.h:48       |     28 (4 calls)  |                 |                    |                   |               |
++--------------------------------------+--------------------------+-------------------+-----------------+--------------------+-------------------+---------------+
+    * - Exceeded design size warning message threshold
+
+* Design Size Message Settings
++---------------------------------------------+--------+------------------------------------------------------------------+
+| Message Setting                             | Value  | Description                                                      |
++---------------------------------------------+--------+------------------------------------------------------------------+
+| config_compile -design_size_maximum_warning | 100000 | Show a warning when total design instructions exceeds this value |
++---------------------------------------------+--------+------------------------------------------------------------------+
+
+
