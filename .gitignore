@@ -34,7 +34,6 @@ _ide/.wsdata/
 
 # Ignore Vitis HLS specific temporary files
 *.str
-*.dat
 *.pb
 *.protoinst
 *.tcl~
@@ -54,3 +53,5 @@ dti_hls_core.hlscompile_summary
 # testbench/
 # hls_config.cfg
 # vitis-comp.json
+
+/reports
