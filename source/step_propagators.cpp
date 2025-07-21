@@ -244,6 +244,14 @@ void half_nonlin_ops(hls::stream<complex_t>& in,
     out.write(val);
 }
 
+// Convenience wrapper for sequential execution without streams
+static complex_t half_nonlin_scalar(complex_t val) {
+    hls::stream<complex_t> in, out;
+    in.write(val);
+    half_nonlin_ops(in, out);
+    return out.read();
+}
+
 /**
  * Full propagation step: ADI X → half-TPA → half-Kerr → half-linear
  *                     → ADI Y → half-TPA → half-Kerr → half-linear
@@ -257,65 +265,29 @@ void propagation_step(
     #pragma HLS INTERFACE m_axi     port=phi_out offset=slave bundle=G_MEM
     #pragma HLS bind_storage variable=phi_in  type=ram_1p impl=uram
     #pragma HLS bind_storage variable=phi_out type=ram_1p impl=uram
-    #pragma HLS DATAFLOW
-
     static complex_t tmp1[DIM][DIM], tmp2[DIM][DIM];
     #pragma HLS bind_storage variable=tmp1 type=ram_1p impl=uram
     #pragma HLS bind_storage variable=tmp2 type=ram_1p impl=uram
-    #pragma HLS ARRAY_PARTITION variable=tmp1 complete dim=2
-    #pragma HLS ARRAY_PARTITION variable=tmp2 complete dim=2
-    #pragma HLS ARRAY_PARTITION variable=tmp1 cyclic factor=4 dim=1
-    #pragma HLS ARRAY_PARTITION variable=tmp2 cyclic factor=4 dim=1
 
     // ADI in X direction
     adi_x(phi_in, tmp1);
 
-    // Apply nonlinear operators on streaming form (X half-step)
-    {
-        hls::stream<complex_t> s_in[4], s_out[4];
-        #pragma HLS STREAM variable=s_in depth=8
-        #pragma HLS STREAM variable=s_out depth=8
-        #pragma HLS ARRAY_PARTITION variable=s_in complete dim=1
-        #pragma HLS ARRAY_PARTITION variable=s_out complete dim=1
-
-        for (int j = 0; j < DIM; j++) {
-            for (int i = 0; i < DIM; i+=4) {
-                #pragma HLS PIPELINE II=1
-
-                // Process 4 elements in parallel
-                for (int k = 0; k < 4 && (i+k) < DIM; k++) {
-                    #pragma HLS UNROLL
-                    s_in[k].write(tmp1[i+k][j]);
-                    half_nonlin_ops(s_in[k], s_out[k]);
-                    tmp2[i+k][j] = s_out[k].read();
-                }
-            }
+    // Apply nonlinear operators sequentially (X half-step)
+    for (int j = 0; j < DIM; j++) {
+        for (int i = 0; i < DIM; i++) {
+            #pragma HLS PIPELINE II=1
+            tmp2[i][j] = half_nonlin_scalar(tmp1[i][j]);
         }
     }
 
     // ADI in Y direction
     adi_y(tmp2, tmp1);
 
-    // Apply nonlinear operators again (Y half-step)
-    {
-        hls::stream<complex_t> s_in[4], s_out[4];
-        #pragma HLS STREAM variable=s_in depth=8
-        #pragma HLS STREAM variable=s_out depth=8
-        #pragma HLS ARRAY_PARTITION variable=s_in complete dim=1
-        #pragma HLS ARRAY_PARTITION variable=s_out complete dim=1
-
-        for (int j = 0; j < DIM; j++) {
-            for (int i = 0; i < DIM; i+=4) {
-                #pragma HLS PIPELINE II=1
-
-                // Process 4 elements in parallel
-                for (int k = 0; k < 4 && (i+k) < DIM; k++) {
-                    #pragma HLS UNROLL
-                    s_in[k].write(tmp1[i+k][j]);
-                    half_nonlin_ops(s_in[k], s_out[k]);
-                    phi_out[i+k][j] = s_out[k].read();
-                }
-            }
+    // Apply nonlinear operators again sequentially (Y half-step)
+    for (int j = 0; j < DIM; j++) {
+        for (int i = 0; i < DIM; i++) {
+            #pragma HLS PIPELINE II=1
+            phi_out[i][j] = half_nonlin_scalar(tmp1[i][j]);
         }
     }
 }
