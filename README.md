@@ -31,14 +31,12 @@ The accelerator implements a split-step beam propagation algorithm that combines
 
 ```
 dti_hls_core/
-├── compile_commands.json    # Compilation commands for the project
 ├── hls_config.cfg           # HLS configuration file
-├── source/                  # Source code directory
+├── source/                  # Source code and testbench
 │   ├── dti_core_ovr.cpp     # Top-level function for the accelerator
 │   ├── hls_stub.h           # Minimal HLS stubs for host compilation
 │   ├── step_propagators.cpp # Implementation of propagation algorithms
-│   └── step_propagators.h   # Declarations and constants
-├── testbench/               # Testbench directory
+│   ├── step_propagators.h   # Declarations and constants
 │   ├── step_propagators_tb.cpp  # Main testbench for validation
 │   ├── test_utils.cpp       # Utilities for testing
 │   ├── test_utils.h         # Utility declarations
