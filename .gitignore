@@ -7,9 +7,9 @@
 *.d
 
 # Ignore logs folder and log files
-#/logs/
-#*.log
-#.vitis_hls_log_all.xml
+/logs/
+*.log
+.vitis_hls_log_all.xml
 
 # Ignore lock files
 *.lock
@@ -43,10 +43,11 @@ compile_commands.json
 dfx_runtime.txt
 .output.txt
 dti_hls_core.hlsrun_csim_summary
-#dti_hls_core
-#hls
+/dti_hls_core
+/hls
 
-#dti_hls_core.hlscompile_summary
+dti_hls_core.hlscompile_summary
+/reports
 
 # Do NOT ignore these important directories and files
 # source/
@@ -54,4 +55,3 @@ dti_hls_core.hlsrun_csim_summary
 # hls_config.cfg
 # vitis-comp.json
 
-#/reports
